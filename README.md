@@ -1,11 +1,8 @@
 # solidmagnet
 
-A web interface for [bitmagnet](https://github.com/bitmagnet-io/bitmagnet).
+A performant web interface for [bitmagnet](https://github.com/bitmagnet-io/bitmagnet). Created out of spite because the stock one fucking SUCKS.
 
-It covers torrent search and filtering, torrent details and file lists, tags and
-bulk actions, the torrent metrics dashboard, and the queue visualizer, jobs, and
-admin pages. The interface is translated into all 14 languages supported by
-bitmagnet and includes its four themes.
+<image src=".github/screenshot.png" />
 
 ## Requirements
 
