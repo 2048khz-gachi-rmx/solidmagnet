@@ -1,0 +1,294 @@
+/* Queue dashboard: visualize controls, jobs drawer/table, admin dialogs. */
+
+/* ---------- Visualize control grid ---------- */
+
+.queue-control-grid {
+  margin-bottom: 16px;
+}
+
+.queue-control-grid > .card {
+  height: 200px;
+  margin: 0;
+  overflow: auto;
+}
+
+.queue-control .card-header {
+  min-height: 48px;
+}
+
+.queue-control h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.queue-control .card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 190px;
+}
+
+.queue-control .field {
+  width: 186px;
+}
+
+.queue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 210px;
+  padding-top: 4px;
+}
+
+.queue-actions .btn-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.queue-actions .btn-icon .icon {
+  font-size: 22px;
+}
+
+.queue-actions .btn-icon.selected {
+  background: var(--color-selected);
+  color: var(--color-primary);
+}
+
+.queue-actions .btn-icon.deselected {
+  color: var(--color-text-muted);
+}
+
+.queue-resolution-inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.queue-number-input {
+  width: 60px;
+}
+
+.queue-number-input .field-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 8px;
+  -moz-appearance: textfield;
+}
+
+.queue-number-input .field-input::-webkit-outer-spin-button,
+.queue-number-input .field-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.queue-duration {
+  width: 116px;
+}
+
+/* ---------- Jobs page ---------- */
+
+.queue-jobs-sidebar .card {
+  margin-bottom: 8px;
+}
+
+.queue-jobs-sidebar .card-header {
+  min-height: 40px;
+  padding: 4px 16px;
+}
+
+.queue-jobs-sidebar .card-title {
+  font-size: 15px;
+}
+
+.queue-jobs-sidebar .card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 16px 12px;
+}
+
+@media (min-width: 960px) {
+  .queue-jobs-sidebar:not(.open) {
+    display: none;
+  }
+}
+
+.query-form {
+  position: relative;
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px 0 10px;
+}
+
+.query-form .form-field-container {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
+
+.query-form .button-container-toggle-drawer {
+  margin-left: 5px;
+}
+
+.query-form .form-field-container-order-by {
+  padding-right: 40px;
+}
+
+.query-form .form-field-container-order-by .btn-icon {
+  position: absolute;
+  right: 0;
+  top: 18px;
+}
+
+.query-form .button-container-refresh {
+  margin-left: auto;
+  padding-top: 8px;
+}
+
+.queue-order-by {
+  width: 160px;
+}
+
+.queue-table-wrap {
+  overflow-x: auto;
+}
+
+.queue-jobs-table {
+  table-layout: auto;
+}
+
+.queue-jobs-table .queue-col-time {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.queue-jobs-table .queue-col-id {
+  font-family: var(--font-monospace, monospace);
+  font-size: 12px;
+}
+
+.queue-summary-row {
+  cursor: pointer;
+}
+
+.queue-summary-row.expanded {
+  background: var(--color-selected);
+}
+
+.queue-jobs-table .detail-row td {
+  padding: 0 16px;
+}
+
+.queue-item-detail {
+  padding: 0 0 20px;
+}
+
+.queue-item-detail > :first-child {
+  padding-top: 20px;
+}
+
+.queue-item-detail p {
+  margin: 0;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.queue-item-detail h5 {
+  margin: 0;
+  padding-top: 8px;
+}
+
+.queue-copy {
+  cursor: crosshair;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.queue-payload {
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+  padding: 10px;
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+  font-family: var(--font-monospace, monospace);
+  font-size: 12px;
+  white-space: pre;
+}
+
+.queue-jobs-table .queue-status {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.chip.queue-status-pending {
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary);
+}
+
+.chip.queue-status-processed {
+  background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  color: var(--color-success);
+}
+
+.chip.queue-status-retry {
+  background: color-mix(in srgb, var(--color-caution) 18%, transparent);
+  color: var(--color-caution);
+}
+
+.chip.queue-status-failed {
+  background: color-mix(in srgb, var(--color-error) 15%, transparent);
+  color: var(--color-error);
+}
+
+/* ---------- Admin ---------- */
+
+.queue-admin-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.queue-admin-list li {
+  margin-bottom: 6px;
+}
+
+/* ---------- Dialogs ---------- */
+
+.queue-dialog .modal-content {
+  min-height: 240px;
+}
+
+.queue-dialog-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.queue-dialog-section h4 {
+  margin: 8px 0;
+}
+
+.queue-content-types {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.queue-content-types .field-input {
+  height: auto;
+  padding: 4px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 959.98px) {
+  .queue-col-optional {
+    display: none;
+  }
+}

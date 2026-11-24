@@ -1,0 +1,4 @@
+dist
+node_modules
+file-routes.d.ts
+bun.lock

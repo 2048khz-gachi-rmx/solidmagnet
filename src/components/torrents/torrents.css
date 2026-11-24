@@ -1,0 +1,686 @@
+/* ---------------------------------------------------------------------------
+   Torrents feature styles. Imported once from TorrentContent.tsx.
+   Layout numbers follow the Angular original (220px sidebar, 56px toolbar,
+   300px search field, 140px page-size field, 225ms detail animation).
+   --------------------------------------------------------------------------- */
+
+/* Sidebar */
+
+@media (min-width: 960px) {
+  .sidebar.torrents-sidebar-closed {
+    display: none;
+  }
+}
+
+.panel-content-type .expansion-body {
+  padding-top: 4px;
+}
+
+.content-type-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content-type-nav li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.content-type-nav li .icon {
+  color: var(--color-text-muted);
+}
+
+.content-type-nav li.active {
+  color: var(--color-primary);
+}
+
+.content-type-nav li.active .icon {
+  color: var(--color-primary);
+}
+
+.content-type-nav li:hover:not(.active) {
+  color: var(--color-text);
+}
+
+.content-type-nav small {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.facet-values {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.facet-values .checkbox {
+  display: flex;
+  width: 100%;
+  min-height: 22px;
+}
+
+.facet-values .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.facet-values small {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.unfiltered .checkbox-box {
+  border-color: var(--color-border);
+}
+
+/* Search toolbar */
+
+.search-form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 0 12px 4px 0;
+}
+
+.search-form .button-toggle-drawer {
+  margin-top: 0;
+}
+
+.search-field {
+  position: relative;
+  width: 300px;
+}
+
+.search-field .field {
+  width: 100%;
+}
+
+.search-field .search-query .field-input {
+  padding-right: 80px;
+}
+
+.search-field .btn {
+  position: absolute;
+  top: 0;
+}
+
+.search-field .search-clear {
+  right: 38px;
+}
+
+.search-field .search-submit {
+  right: 0;
+}
+
+.order-by-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.order-by-field .order-by-select {
+  width: 180px;
+}
+
+.search-form > .btn-mini-fab {
+  margin-top: 0;
+}
+
+/* Torrents table */
+
+.torrents-table .column-select {
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  padding: 0 0 0 10px;
+  vertical-align: middle;
+}
+
+.torrents-table .column-size {
+  width: 120px;
+  min-width: 120px;
+  padding-right: 24px;
+}
+
+.torrents-table .column-published-at {
+  width: 120px;
+  min-width: 120px;
+}
+
+.torrents-table .column-peers {
+  width: 76px;
+  min-width: 76px;
+  white-space: nowrap;
+}
+
+.torrents-table td {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.torrents-table th {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.torrents-table .column-select .checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.torrents-table .column-summary {
+  vertical-align: middle;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.summary-cell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.summary-cell .content-type-icon {
+  margin: 0;
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+.summary-cell .title {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  line-height: 20px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.summary-cell .torrent-chips {
+  display: flex;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.summary-cell .torrent-chips .chip {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.torrents-table .column-magnet {
+  width: 68px;
+  min-width: 68px;
+  text-align: center;
+}
+
+.torrents-table .column-magnet .magnet-link {
+  display: inline-flex;
+  color: var(--color-primary);
+}
+
+.torrents-table .column-published-at abbr {
+  cursor: default;
+  text-decoration: underline dotted;
+}
+
+.torrents-table .column-peers {
+  white-space: nowrap;
+}
+
+.torrents-table .summary-row.expanded td {
+  border-bottom: 0;
+}
+
+.torrents-table .detail-row > td {
+  padding: 0;
+  border-bottom: 0;
+}
+
+.torrents-table .detail-row:hover {
+  background: transparent;
+}
+
+.item-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  overflow: hidden;
+  transition: grid-template-rows 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item-detail.expanded {
+  grid-template-rows: 1fr;
+}
+
+.item-detail-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.item-detail.expanded,
+.item-detail.expanded .item-detail-inner {
+  overflow: visible;
+}
+
+.detail-card {
+  margin: 8px 12px;
+}
+
+/* Cards holding the inline tag-suggestion dropdown must not clip it. */
+.card.detail-card,
+.card.edit-tags-card,
+.card.torrent-permalink,
+.bulk-actions .card {
+  overflow: visible;
+}
+
+/* Torrent content */
+
+.torrent-content .poster {
+  float: right;
+  margin: 10px;
+  border: 1px solid currentColor;
+}
+
+.torrent-heading {
+  margin-top: 0;
+  max-width: 900px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.torrent-content p {
+  margin: 4px 0;
+}
+
+.torrent-content .filesize {
+  text-decoration: underline dotted;
+  cursor: default;
+}
+
+.info-hash {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.info-hash span {
+  padding-left: 5px;
+  cursor: crosshair;
+  text-decoration: underline dotted;
+}
+
+.torrent-content-divider {
+  clear: both;
+  margin-top: 12px;
+}
+
+.torrent-tabs {
+  margin-top: 0;
+}
+
+.torrent-tabs .files-count {
+  margin-left: 4px;
+}
+
+.card.torrent-files {
+  padding: 0 0 8px;
+  max-height: 800px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.torrent-files::-webkit-scrollbar {
+  display: none;
+}
+
+.torrent-files .files-no-info {
+  padding: 0 16px;
+}
+
+.torrent-files-table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.torrent-files-table .file-index,
+.torrent-files-table .file-type,
+.torrent-files-table .file-size {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.torrent-files-table .file-path {
+  width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.torrent-files-table td {
+  padding-right: 16px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.torrent-files-table th,
+.torrent-files-table td {
+  padding-left: 16px;
+}
+
+.torrent-files-table tbody tr:hover td {
+  background: var(--color-hover);
+}
+
+.torrent-files-table .file-type .icon {
+  margin-right: 6px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.files-table-summary {
+  margin: 4px 16px;
+}
+
+.files-table .paginator {
+  padding: 4px 16px;
+}
+
+.delete-confirmation p {
+  margin: 0;
+}
+
+/* Tag input */
+
+.tag-input {
+  position: relative;
+}
+
+.tag-input-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.tag-input-chips .chip {
+  height: 30px;
+}
+
+.tag-input-field {
+  flex: 1;
+  min-width: 120px;
+  height: 36px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  outline: none;
+}
+
+.tag-suggestions {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  margin: 0;
+  padding: 4px 0;
+  overflow: auto;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tag-suggestions button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tag-suggestions button:hover {
+  background: var(--color-hover);
+}
+
+.edit-tags-body {
+  padding: 16px;
+}
+
+/* Reprocess */
+
+.reprocess-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.reprocess-card .checkbox {
+  margin-right: 20px;
+}
+
+/* Bulk actions */
+
+.bulk-actions {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(560px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.bulk-actions > * {
+  pointer-events: auto;
+}
+
+.bulk-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 22%);
+}
+
+.bulk-action {
+  display: inline-flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bulk-action:hover {
+  background: var(--color-hover);
+}
+
+.bulk-action.active {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.bulk-action .icon {
+  font-size: 20px;
+}
+
+.bulk-action-label {
+  white-space: nowrap;
+}
+
+.bulk-actions-panel {
+  overflow: visible;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 24%);
+}
+
+.bulk-actions-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 4px 0 12px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-weight: 600;
+}
+
+.bulk-actions-panel .card {
+  margin: 0;
+  border: 0;
+  border-radius: 0 0 8px 8px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.bulk-actions .card-actions .btn {
+  margin-right: 10px;
+}
+
+.bulk-actions p {
+  margin-top: 0;
+}
+
+.bulk-actions-spacer {
+  height: 88px;
+}
+
+.bulk-tags-content {
+  padding-bottom: 0;
+}
+
+/* Permalink */
+
+.torrent-permalink {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.permalink-header {
+  position: relative;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px 0;
+}
+
+.permalink-type-icon {
+  display: flex;
+  align-items: center;
+  margin-top: -4px;
+  color: var(--color-primary);
+}
+
+.permalink-type-icon .icon {
+  font-size: 44px;
+}
+
+.permalink-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.permalink-heading h2 {
+  margin: 0;
+  padding-right: 60px;
+  font-size: 24px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.permalink-heading .torrent-chips {
+  margin: 12px 0 0;
+}
+
+.permalink-header .magnet-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  color: var(--color-primary);
+}
+
+.not-found-card {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+/* Compact labels below the Medium breakpoint (960px). */
+
+@media (max-width: 959.98px) {
+  .torrent-tabs .tab-label-text,
+  .bulk-action-label {
+    display: none;
+  }
+
+  .bulk-actions {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+
+  .bulk-action {
+    padding: 0;
+  }
+
+  .bulk-actions-spacer {
+    height: 76px;
+  }
+
+  .search-field {
+    width: 260px;
+  }
+}
+
+.torrents-table .column-size,
+.torrents-table .column-published-at,
+.torrents-table .column-published-at abbr {
+  white-space: nowrap;
+}

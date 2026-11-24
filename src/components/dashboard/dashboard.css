@@ -1,0 +1,102 @@
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Control cards mirror the Angular grid: 5 / 3 / 2 / 1 columns. */
+.metrics-controls {
+  margin-bottom: 8px;
+}
+
+.metrics-control-card {
+  width: 100%;
+}
+
+.metrics-control-card .metrics-card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.metrics-control-card .metrics-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 190px;
+}
+
+.metrics-control-card .metrics-select,
+.metrics-control-card .metrics-duration-field {
+  width: 186px;
+}
+
+.metrics-resolution-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.metrics-control-card .metrics-multiplier-field {
+  width: 60px;
+}
+
+.metrics-control-card .metrics-duration-field {
+  width: 116px;
+}
+
+/* Hide the number input spinners, as the Angular page did. */
+.metrics-multiplier-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.metrics-multiplier-field input::-webkit-outer-spin-button,
+.metrics-multiplier-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.metrics-actions {
+  display: flex;
+  align-items: center;
+  width: 210px;
+  padding-top: 12px;
+}
+
+.metrics-actions .btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin-right: 0;
+}
+
+.metrics-actions .icon {
+  font-size: 22px;
+}
+
+.metrics-resolution-actions {
+  margin-left: -2px;
+}
+
+.metrics-actions .selected {
+  color: var(--color-primary);
+}
+
+.metrics-actions .deselected {
+  color: var(--color-text-muted);
+}
+
+.metrics .progress-bar-container {
+  width: 100%;
+  height: 10px;
+}
+
+.metrics-charts {
+  margin-top: 8px;
+}
+
+@media (max-width: 1279.98px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
