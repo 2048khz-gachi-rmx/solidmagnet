@@ -123,16 +123,9 @@ function TorrentsSearchBody(props: TorrentsSearchBodyProps) {
     return items().filter((item) => selected.has(item.infoHash));
   });
 
-  // Drop selections whose rows no longer exist after a search or mutation.
-  createEffect(
-    () => items().map((item) => item.infoHash),
-    (infoHashes) => {
-      const current = new Set(infoHashes);
-      setSelection((previous) =>
-        previous.filter((infoHash) => current.has(infoHash)),
-      );
-    },
-  );
+  // Selections that fall outside the current result set stay in the signal but
+  // are filtered out here, so no effect has to relay query data into the
+  // selection signal.
 
   const contentTypeCounts = createMemo(() => {
     const counts: Record<string, { count: number; isEstimate: boolean }> = {};

@@ -116,71 +116,73 @@ export function TorrentsTable(props: TorrentsTableProps) {
           </tr>
         </thead>
         <tbody>
-          <For each={props.items}>
+          {/* Results are keyed by info hash so a torrent keeps its row when
+              it survives a refresh. */}
+          <For each={props.items} keyed={(item) => item.infoHash}>
             {(item) => (
               <>
                 <tr
                   class={[
                     "summary-row",
-                    { expanded: isExpanded(item.infoHash) },
+                    { expanded: isExpanded(item().infoHash) },
                   ]}
                 >
                   <Show when={hasColumn("select")}>
                     <td class="column-select">
                       <Checkbox
-                        checked={isSelected(item.infoHash)}
+                        checked={isSelected(item().infoHash)}
                         ariaLabel={t("torrents.select_all")}
-                        onChange={() => toggleOne(item.infoHash)}
+                        onChange={() => toggleOne(item().infoHash)}
                       />
                     </td>
                   </Show>
                   <td
                     class="column-summary"
-                    onClick={() => props.onToggleTorrent(item.infoHash)}
+                    onClick={() => props.onToggleTorrent(item().infoHash)}
                   >
                     <div class="summary-cell">
                       <Icon
                         name={
-                          contentTypeInfo(item.contentType)?.icon ??
+                          contentTypeInfo(item().contentType)?.icon ??
                           "question_mark"
                         }
                         class="content-type-icon"
                         title={t(
-                          `content_types.singular.${item.contentType ?? "null"}`,
+                          `content_types.singular.${item().contentType ?? "null"}`,
                         )}
                       />
-                      <span class="title" title={item.torrent.name}>
-                        {item.title}
+                      <span class="title" title={item().torrent.name}>
+                        {item().title}
                       </span>
-                      <TorrentChips torrentContent={item} />
+                      <TorrentChips torrentContent={item()} />
                     </div>
                   </td>
                   <Show when={hasColumn("size")}>
                     <td class="column-size">
                       <span
                         class="filesize"
-                        title={formatFilesize(item.torrent.size, lang(), 10)}
+                        title={formatFilesize(item().torrent.size, lang(), 10)}
                       >
-                        {formatFilesize(item.torrent.size, lang())}
+                        {formatFilesize(item().torrent.size, lang())}
                       </span>
                     </td>
                   </Show>
                   <Show when={hasColumn("publishedAt")}>
                     <td class="column-published-at">
-                      <abbr title={item.publishedAt}>
-                        {formatTimeAgo(item.publishedAt, lang())}
+                      <abbr title={item().publishedAt}>
+                        {formatTimeAgo(item().publishedAt, lang())}
                       </abbr>
                     </td>
                   </Show>
                   <Show when={hasColumn("peers")}>
                     <td class="column-peers">
-                      {item.seeders ?? "?"} / {item.leechers ?? "?"}
+                      {item().seeders ?? "?"} / {item().leechers ?? "?"}
                     </td>
                   </Show>
                   <Show when={hasColumn("magnet")}>
                     <td class="column-magnet">
                       <a
-                        href={item.torrent.magnetUri}
+                        href={item().torrent.magnetUri}
                         class="magnet-link"
                         title={t("torrents.magnet")}
                       >
@@ -189,7 +191,7 @@ export function TorrentsTable(props: TorrentsTableProps) {
                     </td>
                   </Show>
                 </tr>
-                <Show when={isExpanded(item.infoHash)}>
+                <Show when={isExpanded(item().infoHash)}>
                   <tr class="detail-row">
                     <td colspan={columns().length}>
                       <div class="item-detail expanded">
@@ -197,13 +199,13 @@ export function TorrentsTable(props: TorrentsTableProps) {
                           <Card class="detail-card">
                             <CardContent>
                               <TorrentContent
-                                torrentContent={item}
+                                torrentContent={item()}
                                 size={false}
                                 published={atLeast("Medium")}
                                 peers={atLeast("Medium")}
                                 selectedTab={props.selectedTorrent?.tab}
                                 onTabSelected={(tab) =>
-                                  props.onTabSelected(item.infoHash, tab)
+                                  props.onTabSelected(item().infoHash, tab)
                                 }
                                 onUpdated={() => props.onUpdated()}
                               />

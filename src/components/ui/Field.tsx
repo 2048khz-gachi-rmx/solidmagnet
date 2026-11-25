@@ -100,14 +100,14 @@ export function Select<T extends string | number>(props: SelectProps<T>) {
           if (option) props.onChange(option.value);
         }}
       >
-        <For each={props.options}>
+        <For each={props.options} keyed={(option) => option.value}>
           {(option) => (
             <option
-              value={String(option.value)}
-              selected={option.value === props.value}
-              disabled={option.disabled}
+              value={String(option().value)}
+              selected={option().value === props.value}
+              disabled={option().disabled}
             >
-              {option.label}
+              {option().label}
             </option>
           )}
         </For>
