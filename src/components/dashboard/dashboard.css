@@ -23,43 +23,45 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  min-width: 190px;
+  min-width: 0;
 }
 
-.metrics-control-card .metrics-select,
-.metrics-control-card .metrics-duration-field {
-  width: 186px;
+.metrics-control-card .metrics-select {
+  width: 100%;
 }
 
 .metrics-resolution-row {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .metrics-control-card .metrics-multiplier-field {
-  width: 60px;
+  flex: 0 0 68px;
+  width: 68px;
+}
+
+.metrics-multiplier-field .field-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 4px 0 8px;
 }
 
 .metrics-control-card .metrics-duration-field {
-  width: 116px;
+  flex: 1;
+  min-width: 100px;
 }
 
-/* Hide the number input spinners, as the Angular page did. */
-.metrics-multiplier-field input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.metrics-multiplier-field input::-webkit-outer-spin-button,
-.metrics-multiplier-field input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.metrics-duration-field .field-input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .metrics-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 210px;
+  width: 100%;
   padding-top: 12px;
 }
 

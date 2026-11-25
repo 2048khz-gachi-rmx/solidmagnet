@@ -60,6 +60,11 @@ export function ChartCard<Data>(props: ChartCardProps<Data>) {
       }),
     (configuration) => {
       chart?.destroy();
+      configuration.options = {
+        ...configuration.options,
+        responsive: true,
+        maintainAspectRatio: false,
+      };
       chart = new ChartJs(canvas, configuration);
       return () => {
         chart?.destroy();
@@ -84,7 +89,10 @@ export function ChartCard<Data>(props: ChartCardProps<Data>) {
         </h4>
       </CardHeader>
       <CardContent>
-        <div class="chart-canvas-wrap">
+        <div
+          class="chart-canvas-wrap"
+          style={{ height: `${props.height ?? 400}px` }}
+        >
           <canvas
             ref={canvas}
             width={props.width ?? 550}

@@ -179,19 +179,6 @@ function QueueMetricsPanel(props: QueueMetricsPanelProps) {
             </div>
             <div class="queue-actions">
               <IconButton
-                label={t("paginator.previous_page")}
-                disabled={bucketMultiplier() <= 1}
-                onClick={() => props.onBucketMultiplier(bucketMultiplier() - 1)}
-              >
-                <Icon name="remove" />
-              </IconButton>
-              <IconButton
-                label={t("paginator.next_page")}
-                onClick={() => props.onBucketMultiplier(bucketMultiplier() + 1)}
-              >
-                <Icon name="add" />
-              </IconButton>
-              <IconButton
                 label={t("paginator.first_page")}
                 disabled={resolutionIndex() <= 0}
                 onClick={() => props.onBucketDuration(resolutionNames[0])}

@@ -103,12 +103,15 @@ function ResolutionCard(props: { controller: TorrentMetricsController }) {
         <TextInput
           class="metrics-multiplier-field"
           type="number"
+          min={1}
           value={typeof multiplier() === "number" ? String(multiplier()) : ""}
           placeholder={String(props.controller.bucketMultiplier())}
           ariaLabel={t("dashboard.metrics.resolution")}
           onInput={(value) =>
             props.controller.setBucketMultiplier(
-              /^\d+$/.test(value) ? parseInt(value, 10) : "AUTO",
+              /^\d+$/.test(value) && Number(value) >= 1
+                ? parseInt(value, 10)
+                : "AUTO",
             )
           }
         />
@@ -124,27 +127,6 @@ function ResolutionCard(props: { controller: TorrentMetricsController }) {
         />
       </div>
       <div class="metrics-actions metrics-resolution-actions">
-        <IconButton
-          label={`${t("dashboard.metrics.resolution")} −`}
-          disabled={props.controller.bucketMultiplier() === 1}
-          onClick={() =>
-            props.controller.setBucketMultiplier(
-              props.controller.bucketMultiplier() - 1,
-            )
-          }
-        >
-          <Icon name="remove" />
-        </IconButton>
-        <IconButton
-          label={`${t("dashboard.metrics.resolution")} +`}
-          onClick={() =>
-            props.controller.setBucketMultiplier(
-              props.controller.bucketMultiplier() + 1,
-            )
-          }
-        >
-          <Icon name="add" />
-        </IconButton>
         <IconButton
           label={t("paginator.first_page")}
           disabled={index() <= 0}

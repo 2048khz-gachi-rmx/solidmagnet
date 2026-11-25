@@ -6,6 +6,7 @@ type TextInputProps = {
   placeholder?: string;
   label?: string;
   type?: "text" | "number" | "search";
+  min?: number;
   class?: string;
   disabled?: boolean;
   autofocus?: boolean;
@@ -23,6 +24,7 @@ export function TextInput(props: TextInputProps) {
       <input
         class="field-input"
         type={props.type ?? "text"}
+        min={props.min}
         value={props.value ?? ""}
         placeholder={props.placeholder}
         disabled={props.disabled}
