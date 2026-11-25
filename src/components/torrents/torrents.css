@@ -13,7 +13,7 @@
 }
 
 .panel-content-type .expansion-body {
-  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .content-type-nav ul {
@@ -27,7 +27,7 @@
   align-items: center;
   gap: 8px;
   padding: 0;
-  line-height: 28px;
+  line-height: 32px;
   cursor: pointer;
 }
 
@@ -345,10 +345,11 @@
 }
 
 .card.torrent-files {
-  padding: 0 0 8px;
+  padding: 0;
   max-height: 800px;
   overflow: auto;
   scrollbar-width: none;
+  border-radius: 0px 0px var(--radius-card) var(--radius-card);
 }
 
 .torrent-files::-webkit-scrollbar {
@@ -365,7 +366,6 @@
 }
 
 .torrent-files-table .file-index,
-.torrent-files-table .file-type,
 .torrent-files-table .file-size {
   width: 1%;
   white-space: nowrap;
@@ -373,6 +373,23 @@
 
 .torrent-files-table .file-path {
   width: 100%;
+}
+
+.torrent-files-table .file-path-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.torrent-files-table .file-path-content .icon {
+  flex: none;
+  margin-top: 1px;
+  font-size: 18px;
+}
+
+.torrent-files-table .file-path-text {
+  min-width: 0;
   word-break: break-word;
   overflow-wrap: anywhere;
 }
@@ -389,12 +406,6 @@
 
 .torrent-files-table tbody tr:hover td {
   background: var(--color-hover);
-}
-
-.torrent-files-table .file-type .icon {
-  margin-right: 6px;
-  font-size: 18px;
-  vertical-align: middle;
 }
 
 .files-table-summary {

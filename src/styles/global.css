@@ -622,7 +622,6 @@ textarea {
 /* ---------- Progress / spinner ---------- */
 
 .progress-bar-container {
-  height: 10px;
   overflow: hidden;
 }
 

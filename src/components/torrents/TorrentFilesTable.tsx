@@ -106,7 +106,6 @@ export function TorrentFilesTable(props: TorrentFilesTableProps) {
             <tr>
               <th class="file-index">{t("torrents.file_index")}</th>
               <th class="file-path">{t("torrents.file_path")}</th>
-              <th class="file-type">{t("torrents.file_type")}</th>
               <th class="file-size">{t("torrents.file_size")}</th>
             </tr>
           </thead>
@@ -115,10 +114,14 @@ export function TorrentFilesTable(props: TorrentFilesTableProps) {
               {(file: TorrentFileFragment) => (
                 <tr>
                   <td class="file-index">{file.index}</td>
-                  <td class="file-path">{file.path}</td>
-                  <td class="file-type">
-                    <Icon name={fileTypeIcon(file.fileType)} />
-                    {t(`file_types.${file.fileType ?? "unknown"}`)}
+                  <td class="file-path">
+                    <span class="file-path-content">
+                      <Icon
+                        name={fileTypeIcon(file.fileType)}
+                        title={t(`file_types.${file.fileType ?? "unknown"}`)}
+                      />
+                      <span class="file-path-text">{file.path}</span>
+                    </span>
                   </td>
                   <td class="file-size">
                     <span
