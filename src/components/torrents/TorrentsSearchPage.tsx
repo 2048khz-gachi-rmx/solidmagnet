@@ -28,6 +28,7 @@ import { useBreakpoints } from "~/lib/platform/breakpoints";
 import { contentTypeList } from "~/lib/content-types";
 import { TorrentsBulkActions } from "./TorrentsBulkActions";
 import { TorrentsTable } from "./TorrentsTable";
+import { createTorrentFilesState } from "./TorrentFilesTable";
 import {
   controlsToQueryVariables,
   facets,
@@ -113,6 +114,19 @@ function TorrentsSearchBody(props: TorrentsSearchBodyProps) {
   );
 
   const [selection, setSelection] = createSignal<string[]>([]);
+
+  // The files of the expanded torrent are the page's business: the detail row
+  // is re-created whenever the result page around it changes, and a request
+  // owned by that row would be restarted with it.
+  const expandedTorrent = createMemo(() =>
+    props.query
+      .data()!
+      .torrentContent.search.items.find(
+        (item) =>
+          item.infoHash === props.search.selection.selectedTorrent?.infoHash,
+      ),
+  );
+  const filesState = createTorrentFilesState(() => expandedTorrent()?.torrent);
 
   const result = () => props.query.data()!.torrentContent.search;
   const items = () => result().items;
@@ -452,6 +466,7 @@ function TorrentsSearchBody(props: TorrentsSearchBodyProps) {
       />
       <TorrentsTable
         items={items()}
+        filesState={filesState}
         loading={loading()}
         selected={selection()}
         selectedTorrent={props.search.selection.selectedTorrent}

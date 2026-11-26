@@ -10,6 +10,7 @@ import type { TorrentContentFragment } from "~/lib/graphql/generated";
 import type { TorrentSelection, TorrentTabSelection } from "./search-controls";
 import { TorrentChips } from "./TorrentChips";
 import { TorrentContent } from "./TorrentContent";
+import type { TorrentFilesState } from "./TorrentFilesTable";
 
 export const allColumns = [
   "select",
@@ -32,6 +33,7 @@ type TorrentsTableProps = {
   onSelectionChange: (infoHashes: string[]) => void;
   onToggleTorrent: (infoHash: string) => void;
   onTabSelected: (infoHash: string, tab: TorrentTabSelection) => void;
+  filesState?: TorrentFilesState;
   onUpdated: () => void;
 };
 
@@ -200,6 +202,7 @@ export function TorrentsTable(props: TorrentsTableProps) {
                             <CardContent>
                               <TorrentContent
                                 torrentContent={item()}
+                                filesState={props.filesState}
                                 size={false}
                                 published={atLeast("Medium")}
                                 peers={atLeast("Medium")}

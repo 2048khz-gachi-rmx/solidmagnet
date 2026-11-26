@@ -16,7 +16,7 @@ import {
 } from "~/lib/graphql/generated";
 import type { TorrentTab, TorrentTabSelection } from "./search-controls";
 import { TorrentEditTags } from "./TorrentEditTags";
-import { TorrentFilesTable } from "./TorrentFilesTable";
+import { TorrentFilesTable, type TorrentFilesState } from "./TorrentFilesTable";
 import { TorrentReprocess } from "./TorrentReprocess";
 import { errorMessage } from "./util";
 import "./torrents.css";
@@ -29,6 +29,7 @@ type TorrentContentProps = {
   published?: boolean;
   selectedTab?: TorrentTabSelection;
   onTabSelected?: (tab: TorrentTabSelection) => void;
+  filesState?: TorrentFilesState;
   onUpdated: () => void;
 };
 
@@ -38,11 +39,11 @@ export function TorrentContent(props: TorrentContentProps) {
   const notify = useNotify();
 
   const [localTab, setLocalTab] = createSignal<TorrentTabSelection>(
-    () => props.selectedTab,
+    () => props.selectedTab ?? "files",
   );
 
   const activeTab = (): TorrentTabSelection =>
-    props.onTabSelected ? props.selectedTab : localTab();
+    props.onTabSelected ? (props.selectedTab ?? "files") : localTab();
 
   const selectTab = (tab: TorrentTabSelection) => {
     if (props.onTabSelected) props.onTabSelected(tab);
@@ -305,7 +306,10 @@ export function TorrentContent(props: TorrentContentProps) {
             <Show when={props.torrentContent.torrent.filesStatus === "no_info"}>
               <p class="files-no-info">{t("torrents.files_no_info")}</p>
             </Show>
-            <TorrentFilesTable torrent={props.torrentContent.torrent} />
+            <TorrentFilesTable
+              torrent={props.torrentContent.torrent}
+              state={props.filesState}
+            />
           </Card>
         </Match>
 
