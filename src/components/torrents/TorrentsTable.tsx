@@ -118,9 +118,10 @@ export function TorrentsTable(props: TorrentsTableProps) {
           </tr>
         </thead>
         <tbody>
-          {/* Results are keyed by info hash so a torrent keeps its row when
-              it survives a refresh. */}
-          <For each={props.items} keyed={(item) => item.infoHash}>
+          {/* Index-keyed: a new result page reuses the rows that are already
+              there and only updates their cells, instead of tearing down and
+              rebuilding every row (and with it the expanded detail). */}
+          <For each={props.items} keyed={false}>
             {(item) => (
               <>
                 <tr
